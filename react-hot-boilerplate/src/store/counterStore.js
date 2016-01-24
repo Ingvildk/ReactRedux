@@ -1,4 +1,8 @@
 import { createStore } from 'redux';
+import rootReducer from '../reducers/rootReducer';
+console.log('counterStore running');
+console.log("rootReducer");
+console.log(rootReducer);
 //we only export one function. Don't need import * as typed from '..'
 /*the reducer is the counter function:
 	counter() {
@@ -9,14 +13,16 @@ import { createStore } from 'redux';
 		case 'INCREMENT':
 			return state + 1;
 */
-import reducer from  '../reducers/redcuerCounter'; 
 
 /*
 console.log("reducerStore running");
 console.log("the reducer:");
 console.log(reducer);
 */
-let store = createStore(reducer);
+let store = createStore(rootReducer);
+console.log("store.getState()");
+console.log(store.getState());
+
 /*
 console.log("----");
 console.log("the store");
