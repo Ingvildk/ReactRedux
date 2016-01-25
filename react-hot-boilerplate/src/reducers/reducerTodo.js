@@ -11,7 +11,6 @@ const todo = (state, action) => {
 		case 'ADD_TODO':
 			return {
 				id: nextTodoId++,
-				type: 'California er best!',
 				text: action.text,
 				completed: false
 			};
@@ -42,8 +41,6 @@ const todos = (state = [], action) => {
 				todo(undefined, action)
 			];
 		case 'DELETE_TODO': 
-			console.log("inside reducertodo DELETE_TODO. This is the state");
-			console.log(state);
 			return state.filter((note) => note.id !== action.id);
 		case 'TOGGLE_TODO': 
 			return state.map(t => 

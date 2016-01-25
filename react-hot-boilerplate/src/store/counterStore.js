@@ -20,9 +20,8 @@ console.log("the reducer:");
 console.log(reducer);
 */
 let store = createStore(rootReducer);
-console.log("store.getState()");
+console.log("--store.getState()--");
 console.log(store.getState());
-
 /*
 console.log("----");
 console.log("the store");

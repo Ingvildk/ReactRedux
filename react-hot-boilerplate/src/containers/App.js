@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import store from '../store/counterStore';
+import Counter from '../components/Counter';
 import * as actionCreators from '../actions/actionCounter';
 import * as actionTodo from '../actions/actionTodo';
 
@@ -21,28 +23,24 @@ export default class App extends Component {
 
 
 render () {
-console.log("render is running");
 // this state 
 var todos = this.state.value.todo;
 var TodoList = todos;
-console.log("TodoList");
-console.log(TodoList);
+
 var callRender = () => {
   	//this is the increment function
-    const increment = actionCreators.increment();
+    const ing = actionCreators.increment();
+    console.log("----increment----");
+    console.log(ing);
     const decrement = actionCreators.decrement();
     return (
       <div>
-        <button onClick = { () => 
-          store.dispatch(increment)} >
-          Space is the place
-        </button> 
-        <button onClick = { () => 
-            store.dispatch(decrement)} >
-          I LOVE CALIFORNIA
-        </button>
-        <br/>
-        <br/>
+        <Counter onClickDecrement = { () => 
+          store.dispatch({decrement})
+        }
+         onClickIncrement = { () => 
+           store.dispatch({ing})
+         } />
         <input type="text" ref={node => {
             this.input = node;
           }} />
@@ -52,8 +50,11 @@ var callRender = () => {
           }} >
             Add todo
         </button>
+
+
+
         <ul>
-          {TodoList.map( (todo) => {
+          {todos.map( (todo) => {
             return (
               <div>
               <li key= {todo.id} 
@@ -85,8 +86,7 @@ var callRender = () => {
   }
   return  (
     <div>
-      {callRender() }
-      
+      {callRender() }  
     </div>
     );
 }
